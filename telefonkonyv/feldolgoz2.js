@@ -3,6 +3,8 @@ $(function () {
 
     $("#beolvas").on("click", beolvas);
     $("#kuld").on("click", abBeir);
+    $("article").delegate(".torol","click", adatTorol);
+
 
 
 });
@@ -13,18 +15,41 @@ function kiir() {
 //    var kep = $("#kep").val();
     $("article").empty();
     for (var i = 0; i < telefonkonyvem.length; i++) {
+        var ID = telefonkonyvem[i].ID;
         var nev = telefonkonyvem[i].nev;
         var tel = telefonkonyvem[i].tel;
         var kep = telefonkonyvem[i].kep;
-    }
-    var elem = "<div> <h2>" + nev + " </h2> <p>" + tel + " </p>  <p>" + kep + " </p> <button class='torol'>Töröl</button> </div>";
+        
+        var elem = "<div> <h2>" + nev + " </h2> <p>" + tel + " </p>  <p>" + kep + " </p> <button class='torol' id='"+ID+"'>Töröl</button> </div>";
     $("article").append(elem);
+    }
+
 }
+
+function adatTorol(){
+var aktelem=$(this).closest("div");
+    var id = $(this).attr("id");
+    console.log("Törlés ******************"+id);
+       $.ajax({
+        type: "DELETE",
+        url: "torol.php?ID="+id,
+        success: function () {
+            console.log("törlés");
+           //kitöröljük azt a div-et amiben a gomb van
+            aktelem.remove();
+          
+        },
+        error: function () {
+            alert("Hiba az adatok törlésekor!")
+        }
+    });
+}
+
 function beolvas() {
 
     $.ajax({
         type: "GET",
-        url: "defeldolgoz.php",
+        url: "feldolgoz.php",
         success: function (result) {
             console.log(result);
             telefonkonyvem = JSON.parse(result);
