@@ -9,17 +9,17 @@ class MySqlDB {
     private $kapcs;
 
     public function __construct() {
-//        $this->db_szerver = "localhost";
-//        $this->db_felhnev = "root";
-//        $this->db_jelszo = "";
-//        $this->db_nev = "telefonkonyv2";
-//        $this->kapcsolat();
-        
-        $this->db_szerver = "ABtanulo23szf1a";
-        $this->db_felhnev = "c1_tanulo23szf1a";
-        $this->db_jelszo = "_tanulo23szf1a";
+        $this->db_szerver = "localhost";
+        $this->db_felhnev = "root";
+        $this->db_jelszo = "";
         $this->db_nev = "telefonkonyv2";
         $this->kapcsolat();
+        
+//        $this->db_szerver = "ABtanulo23szf1a";
+//        $this->db_felhnev = "c1_tanulo23szf1a";
+//        $this->db_jelszo = "_tanulo23szf1a";
+//        $this->db_nev = "telefonkonyv2";
+//        $this->kapcsolat();
     }
 
 
